@@ -12,19 +12,19 @@ The built kernel is saved to `/wsl-kernel` within the image and can be copied ou
 
 ```powershell
 # build
-docker build . -t blackstrap-wsl-kernel
+./build.ps1
 
-# extract kernel image
-docker create --name blackstrap-wsl-kernel
-docker cp blackstrap-wsl-kernel:/wsl-kernel PATH_TO_SAVE
-docker rm blackstrap-wsl-kernel
+or
+./build.ps1 -WSLVersion linux-msft-wsl-5.15.167.4
 ```
 
 To use it, specify the custom kernel in your `~/.wslconfig` file and restart WSL with `wsl --shutdown`. Also ensure to escape the path (`\` should be `\\`) you set.
 
+See: https://github.com/MicrosoftDocs/WSL/releases/tag/18947
+
 ```plain
 [wsl2]
-kernel=PATH_TO_KERNEL
+kernel=C:\\Users\\<USER>\\WSL2\\kernel
 ```
 
 # License
